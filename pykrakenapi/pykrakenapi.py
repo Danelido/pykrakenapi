@@ -80,7 +80,7 @@ def callratelimiter(query_type):
                 if self.time_of_last_public_query is not None:
                     now = datetime.datetime.now()
                     lapse = (now - self.time_of_last_public_query).total_seconds()
-                    if lapse < 1.0:
+                    if lapse < 0.1:
                         msg = "public call frequency exceeded (seconds={})"
                         msg = msg.format(str(lapse))
                         raise CallRateLimitError(msg)
